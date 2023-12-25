@@ -1,6 +1,6 @@
-###QR Code Generator
+### QR Code Generator
 
-##This is a simple QR code generator web application built with [Express.JS]((https://expressjs.com/)). and [Qr-image](https://www.npmjs.com/package/qr-image)
+## This is a simple QR code generator web application built with [Express.JS]((https://expressjs.com/)). and [Qr-image](https://www.npmjs.com/package/qr-image)
 
 **Features**
 - Generate QR codes from provided URLs
