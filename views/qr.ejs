@@ -8,11 +8,26 @@
     </head>
 <body class="bg-gray-100 p-8">
     <h1 class="text-3xl font-bold mb-6 mx-auto max-w-xs ">Generated QR Code</h1>
-    <img src="/<%= file %>" alt="QR Code" class="max-w-xs mx-auto rounded-lg shadow-md">
+    <img src="/<%= file %>" alt="QR Code" id="qrCodeImage" style="max-width: 300px; width: 100%; height: auto;" class="max-w-md mx-auto rounded-lg shadow-md">
+
+    <button onclick="downloadImage()" class="block text-center bg-blue-500 text-white px-4 py-2 mx-auto rounded-md mt-4 hover:bg-blue-600 transition duration-300">
+        Save Image
+    </button>
 
     <a href="/" class="block text-center bg-blue-500 text-white px-4 py-2 rounded-md mt-4 max-w-xs mx-auto hover:bg-blue-600 transition duration-300">
         Go Back
     </a>
 </body>
 
+<script>
+    function downloadImage() {
+        // Get the file name from the image source
+        const qrCodeImage = document.getElementById('qrCodeImage');
+        const imageURL = qrCodeImage.src;
+        const fileName = imageURL.split('/').pop(); // Extract file name from URL
+
+        // Trigger download by sending a GET request to the download route
+        window.location.href = `/download/${fileName}`;
+    }
+</script>
 </html>

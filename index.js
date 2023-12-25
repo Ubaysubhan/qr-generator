@@ -44,6 +44,20 @@ const file = `${cleanedFileName}_qr.png`;
     });
 });
 
+app.get("/download/:fileName", (req, res) => {
+  const fileName = req.params.fileName;
+  const filePath = `qr_codes/${fileName}`;
+
+  // Trigger the download by setting the appropriate headers
+  res.download(filePath, (err) => {
+      if (err) {
+          console.error('Error downloading file:', err);
+          res.status(404).send('File not found.');
+      }
+  });
+});
+
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
