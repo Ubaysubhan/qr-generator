@@ -1,6 +1,6 @@
 # QR Code Generator
 
-### This is a simple QR code generator web application built with [Express.JS]((https://expressjs.com/)). and [Qr-image](https://www.npmjs.com/package/qr-image)
+## This is a simple QR code generator web application built with [Express.JS]((https://expressjs.com/)). and [Qr-image](https://www.npmjs.com/package/qr-image)
 
 **Features**
 - Generate QR codes from provided URLs
@@ -14,7 +14,7 @@ HTML/CSS/JavaScript: Frontend interface
 Node.js: JavaScript runtime environment
 
 **Clone the repository:**
-``` git clone https://github.com/your-username/qr-code-generator.git```
+``` git clone https://github.com/Ubaysubhan/qr-code-generator.git```
 
 **Install npm :** ``` npm install ```
 
