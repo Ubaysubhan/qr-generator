@@ -1,3 +1,7 @@
+###QR Code Generator###
+
+###This is a simple QR code generator web application built with Express.js and QRCode.###
+
 **Features**
 - Generate QR codes from provided URLs
 - Download generated QR codes
@@ -9,8 +13,10 @@ QRCode: Library for generating QR codes
 HTML/CSS/JavaScript: Frontend interface
 Node.js: JavaScript runtime environment
 
-Clone the repository:
+**Clone the repository:**
 ``` git clone https://github.com/your-username/qr-code-generator.git```
-``` npm install ```
-```npm start```
+
+**Install npm :** ``` npm install ```
+
+**Start :** ```npm start```
 
