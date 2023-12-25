@@ -10,37 +10,37 @@ app.use(express.static('qr_codes'));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/", (req,res) => {
+let file = null;
+
+app.get("/", (req, res) => {
+  res.render("index.ejs", { file });
+});
+
+app.post("/qr", (req, res) => {
   res.render("index.ejs");
 });
 
-
-app.post("/qr", (req, res) => {
-  res.render("qr.ejs");
-});
-
 app.post("/submit", (req, res) => {
-  const http = "https://"
-  const data =  req.body["link"];
+  const http = "https://";
+  const data = req.body["link"];
 
   const dataWithProtocol = data.startsWith("http://") || data.startsWith("https://") ? data : http + data;
   const cleanedFileName = data.replace(/[^a-zA-Z0-9]/g, "_");
 
   const qr_svg = qr.image(dataWithProtocol, { type: 'png' });
-  const qrImageFilePath = `qr_codes/${cleanedFileName}_qr.png`; 
+  const qrImageFilePath = `qr_codes/${cleanedFileName}_qr.png`;
+  const qrWriteStream = fs.createWriteStream(qrImageFilePath);
 
-const qrWriteStream = fs.createWriteStream(qrImageFilePath);
-
-const file = `${cleanedFileName}_qr.png`;
+  const file = `${cleanedFileName}_qr.png`;
 
   qr_svg.pipe(qrWriteStream)
     .on('finish', () => {
-      console.log(file)
-      res.render('qr.ejs', { file });
+      console.log(file);
+      res.render('index.ejs', { file,data }); // Make sure to pass 'file' variable here
     })
     .on('error', (err) => {
       console.error('Error generating QR code:', err);
-      res.send('An error occurred while generating the QR code.');
+      res.render('index.ejs', { file: null }); // If an error occurs, pass 'null' as 'file'
     });
 });
 
